@@ -6,10 +6,10 @@ S3REGION="`terraform output bucket_region`"
 DDBTABLE="`terraform output lock_table`"
 CRYPTOKEY="`terraform output key_arn`"
 
-exec > ./generated_backend.tf
+exec > ./generated_backend_tf
 exec 2>&1
 
-SCR=<<EOS
+cat <<-EOS
 terraform {
   backend "s3" {
     bucket = "${S3BUCKET}"
@@ -20,4 +20,5 @@ terraform {
     kms_key_id = "${CRYPTOKEY}"
     dynamodb_table = "${DDBTABLE}"
    }
+}
 EOS
