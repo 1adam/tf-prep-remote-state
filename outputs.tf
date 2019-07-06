@@ -2,6 +2,10 @@ output "bucket" {
   value = aws_s3_bucket.tf_s_b.id
 }
 
+output "bucket_region" {
+  value = aws_s3_bucket.tf_s_b.region
+}
+
 output "lock_table" {
   value = aws_dynamodb_table.tf_s_l.name
 }
